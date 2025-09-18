@@ -366,113 +366,143 @@ const technicalSkills = [
             </motion.div>
 
             {/* Hero Section */}
-            <section className="min-h-screen flex items-center justify-center relative px-4">
-              <div className="text-center max-w-4xl mx-auto">
-                <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                  className="mb-8"
-                >
-                  <div className="w-32 h-32 mx-auto bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-4xl font-bold text-primary-foreground mb-6">
-                   <Image
-        src={imagePersonal} // حط الصورة في مجلد public
-        alt="Profile"
-        width={96}
-        height={96}
-         className="object-cover w-full h-full rounded-full border-4 border-white"
-      />
-                  </div>
-                </motion.div>
+         <section className="min-h-screen flex items-center justify-center relative px-4 py-12">
+  <div className="text-center max-w-5xl mx-auto">
+    {/* صورة البروفايل */}
+    <motion.div
+      initial={{ scale: 0, rotate: -180 }}
+      animate={{ scale: 1, rotate: 0 }}
+      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      className="mb-8 flex justify-center"
+    >
+      <div className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-4xl font-bold text-primary-foreground overflow-hidden border-4 border-white shadow-lg">
+        <Image
+          src={imagePersonal}
+          alt="Profile"
+          width={192}
+          height={192}
+          className="object-cover w-full h-full rounded-full"
+        />
+      </div>
+    </motion.div>
 
-                <motion.h1
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
-                  className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-                >
-                  Adham Magdy Elsayed
-                </motion.h1>
+    {/* الاسم */}
+    <motion.h1
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2, duration: 0.8 }}
+      className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+    >
+      Adham Magdy Elsayed
+    </motion.h1>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="text-xl md:text-2xl text-muted-foreground mb-8"
-                >
-                  React Front-End Developer
-                </motion.p>
+    {/* التخصص */}
+    <motion.p
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.4, duration: 0.8 }}
+      className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8"
+    >
+      React Front-End Developer
+    </motion.p>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
-                  className="flex flex-wrap justify-center gap-4 mb-8"
-                >
+    {/* بيانات التواصل */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.6, duration: 0.8 }}
+      className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mb-8"
+    >
+      <a
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=magdyadham229@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button
+          variant="outline"
+          size="sm"
+          className="flex items-center gap-2 w-full sm:w-auto"
+        >
+          <Mail className="h-4 w-4" />
+          magdyadham229@gmail.com
+        </Button>
+      </a>
 
-                  <a
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=magdyadham229@gmail.com"
-  target="_blank"
-  rel="noopener noreferrer"
->
-                  <Button variant="outline" size="sm" className="flex items-center gap-2 bg-transparent">
-                    <Mail className="h-4 w-4" />
-                    magdyadham229@gmail.com
-                  </Button></a>
-               <a
-  href="https://wa.me/201012955916"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <Button
-    variant="outline"
-    size="sm"
-    className="flex items-center gap-2 bg-transparent"
-  >
-    <Phone className="h-4 w-4" />
-    01012955916
-  </Button>
-</a>
+      <a
+        href="https://wa.me/201012955916"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button
+          variant="outline"
+          size="sm"
+          className="flex items-center gap-2 w-full sm:w-auto"
+        >
+          <Phone className="h-4 w-4" />
+          01012955916
+        </Button>
+      </a>
 
-                  <Button variant="outline" size="sm" className="flex items-center gap-2 bg-transparent">
-                    <MapPin className="h-4 w-4" />
-                    Mansoura, Egypt
-                  </Button>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8, duration: 0.5 }}
-                  className="flex justify-center gap-4"
-                >
-                 <Link href="https://github.com/Adham901" target="_blank" rel="noopener noreferrer">
-      <Button size="lg" className="flex items-center gap-2">
-        <Github className="h-5 w-5" />
-          Adham901
+      <Button
+        variant="outline"
+        size="sm"
+        className="flex items-center gap-2 w-full sm:w-auto"
+      >
+        <MapPin className="h-4 w-4" />
+        Mansoura, Egypt
       </Button>
-    </Link>
+    </motion.div>
 
-        <Link href="https://www.linkedin.com/in/adham-magdy-311abb23b/" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" variant="outline" className="flex items-center gap-2 bg-transparent">
-                    <Linkedin className="h-5 w-5" />
-                    Adham-magdy
-                  </Button>
+    {/* لينكات السوشيال والرزوميه */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.8, duration: 0.5 }}
+      className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4"
+    >
+      <Link
+        href="https://github.com/Adham901"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button
+          size="lg"
+          className="flex items-center gap-2 w-full sm:w-auto"
+        >
+          <Github className="h-5 w-5" />
+          Adham901
+        </Button>
+      </Link>
 
-                   </Link>
-            <a
-  href="/Adham-Magdy-Elsayed.pdf"
-  download
->
-  <Button size="lg" variant="secondary" className="flex items-center gap-2">
-    <Download className="h-5 w-5" />
-    Resume
-  </Button>
-</a>
+      <Link
+        href="https://www.linkedin.com/in/adham-magdy-311abb23b/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button
+          size="lg"
+          variant="outline"
+          className="flex items-center gap-2 w-full sm:w-auto"
+        >
+          <Linkedin className="h-5 w-5" />
+          Adham-magdy
+        </Button>
+      </Link>
 
-                </motion.div>
-              </div>
-            </section>
+      <a href="/Adham-Magdy-Elsayed.pdf" download>
+        <Button
+          size="lg"
+          variant="secondary"
+          className="flex items-center gap-2 w-full sm:w-auto"
+        >
+          <Download className="h-5 w-5" />
+          Resume
+        </Button>
+      </a>
+    </motion.div>
+  </div>
+</section>
+
 
             {/* About Section */}
             <AnimatedSection className="py-20 px-4">
