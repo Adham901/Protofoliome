@@ -1,13 +1,18 @@
-"use client"
+"use client";
 
-import type React from "react"
-import Image from "next/image"
-import imagePersonal from "../public/Adham1.jpg"
-import { myProjects } from "@/public/myProjext"
+import type React from "react";
+import Image from "next/image";
+import imagePersonal from "../public/Adham1.jpg";
+import { myProjects } from "@/public/myProjext";
 
-import { useState, useEffect } from "react"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import { ThemeProvider } from "next-themes"
+import { useState, useEffect } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import { ThemeProvider } from "next-themes";
 import {
   Moon,
   Sun,
@@ -22,12 +27,18 @@ import {
   Users,
   BookOpen,
   Briefcase,
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { useTheme } from "next-themes"
-import Link from "next/link"
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { useTheme } from "next-themes";
+import Link from "next/link";
 import {
   SiHtml5,
   SiCss3,
@@ -43,17 +54,17 @@ import {
   SiFigma,
   SiNextdotjs,
   SiTailwindcss,
-} from "react-icons/si"
+} from "react-icons/si";
 
 const ThemeToggle = () => {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
-  if (!mounted) return null
+  if (!mounted) return null;
 
   return (
     <Button
@@ -62,12 +73,22 @@ const ThemeToggle = () => {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="fixed top-4 right-4 z-50 bg-background/80 backdrop-blur-sm border"
     >
-      {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+      {theme === "dark" ? (
+        <Sun className="h-5 w-5" />
+      ) : (
+        <Moon className="h-5 w-5" />
+      )}
     </Button>
-  )
-}
+  );
+};
 
-const AnimatedSection = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+const AnimatedSection = ({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -78,8 +99,8 @@ const AnimatedSection = ({ children, className = "" }: { children: React.ReactNo
     >
       {children}
     </motion.div>
-  )
-}
+  );
+};
 
 const skillIcons: Record<string, React.ReactNode> = {
   HTML5: <SiHtml5 className="inline-block mr-1 text-orange-500" />,
@@ -87,21 +108,35 @@ const skillIcons: Record<string, React.ReactNode> = {
   JavaScript: <SiJavascript className="inline-block mr-1 text-yellow-400" />,
   TypeScript: <SiTypescript className="inline-block mr-1 text-blue-600" />,
   React: <SiReact className="inline-block mr-1 text-cyan-400" />,
-  Nextjs: <SiNextdotjs className="inline-block mr-1 text-gray-900 dark:text-white" />, // ✅ Next.js
-  Tailwind: <SiTailwindcss className="inline-block mr-1 text-sky-400" />,              // ✅ Tailwind
+  Nextjs: (
+    <SiNextdotjs className="inline-block mr-1 text-gray-900 dark:text-white" />
+  ), // ✅ Next.js
+  Tailwind: <SiTailwindcss className="inline-block mr-1 text-sky-400" />, // ✅ Tailwind
   Bootstrap: <SiBootstrap className="inline-block mr-1 text-purple-600" />,
   Sass: <SiSass className="inline-block mr-1 text-pink-500" />,
   jQuery: <SiJquery className="inline-block mr-1 text-blue-400" />,
   "Material UI": <SiMui className="inline-block mr-1 text-sky-500" />,
-  "Git & Github": <SiGithub className="inline-block mr-1 text-gray-700 dark:text-white" />,
+  "Git & Github": (
+    <SiGithub className="inline-block mr-1 text-gray-700 dark:text-white" />
+  ),
   Python: <SiPython className="inline-block mr-1 text-yellow-500" />,
   Figma: <SiFigma className="inline-block mr-1 text-pink-400" />,
-}
+};
 
-
-const SkillCard = ({ icon: Icon, title, skills }: { icon: any; title: string; skills: string[] }) => {
+const SkillCard = ({
+  icon: Icon,
+  title,
+  skills,
+}: {
+  icon: any;
+  title: string;
+  skills: string[];
+}) => {
   return (
-       <motion.div whileHover={{ scale: 1.05, rotateY: 5 }} transition={{ type: "spring", stiffness: 300 }}>
+    <motion.div
+      whileHover={{ scale: 1.05, rotateY: 5 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
       <Card className="h-full bg-gradient-to-br from-background to-muted/50 border-2 hover:border-primary/50 transition-colors">
         <CardHeader className="text-center">
           <Icon className="h-12 w-12 mx-auto mb-4 text-primary" />
@@ -116,7 +151,10 @@ const SkillCard = ({ icon: Icon, title, skills }: { icon: any; title: string; sk
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Badge variant="secondary" className="text-xs flex items-center gap-1">
+                <Badge
+                  variant="secondary"
+                  className="text-xs flex items-center gap-1"
+                >
                   {skillIcons[skill] ?? null}
                   {skill}
                 </Badge>
@@ -126,13 +164,25 @@ const SkillCard = ({ icon: Icon, title, skills }: { icon: any; title: string; sk
         </CardContent>
       </Card>
     </motion.div>
-  )
-}
+  );
+};
 
-const ProjectCard = ({ title, imgPath, demo, github }: 
-  { title: string; imgPath: string; demo: string; github: string }) => {
+const ProjectCard = ({
+  title,
+  imgPath,
+  demo,
+  github,
+}: {
+  title: string;
+  imgPath: string;
+  demo: string;
+  github: string;
+}) => {
   return (
-    <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
+    <motion.div
+      whileHover={{ scale: 1.02, y: -5 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
       <Card className="h-full bg-gradient-to-br from-background to-muted/30 hover:shadow-lg transition-shadow">
         <CardHeader>
           <div className="flex items-center justify-between">
@@ -162,38 +212,37 @@ const ProjectCard = ({ title, imgPath, demo, github }:
         </CardContent>
       </Card>
     </motion.div>
-  )
-}
-
+  );
+};
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
-  const [progress, setProgress] = useState(0)
-  const [loadingText, setLoadingText] = useState("Loading..")
+  const [progress, setProgress] = useState(0);
+  const [loadingText, setLoadingText] = useState("Loading..");
 
   useEffect(() => {
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
-          clearInterval(progressInterval)
-          setTimeout(onComplete, 500) // Small delay before hiding
-          return 100
+          clearInterval(progressInterval);
+          setTimeout(onComplete, 500); // Small delay before hiding
+          return 100;
         }
-        return prev + 2
-      })
-    }, 50)
+        return prev + 2;
+      });
+    }, 50);
 
     const textInterval = setInterval(() => {
       setLoadingText((prev) => {
-        if (prev === "Loading...") return "Loading"
-        return prev + "."
-      })
-    }, 500)
+        if (prev === "Loading...") return "Loading";
+        return prev + ".";
+      });
+    }, 500);
 
     return () => {
-      clearInterval(progressInterval)
-      clearInterval(textInterval)
-    }
-  }, [onComplete])
+      clearInterval(progressInterval);
+      clearInterval(textInterval);
+    };
+  }, [onComplete]);
 
   return (
     <motion.div
@@ -213,7 +262,11 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
               "radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%)",
             ],
           }}
-          transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          transition={{
+            duration: 4,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
           className="absolute inset-0"
         />
       </div>
@@ -243,13 +296,13 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
             }}
             className="w-24 h-24 mx-auto bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-3xl font-bold text-primary-foreground shadow-2xl"
           >
-           <Image
-        src={imagePersonal} // حط الصورة في مجلد public
-        alt="Profile"
-        width={96}
-        height={96}
-         className="object-cover w-full h-full rounded-full border-4 border-white"
-      />
+            <Image
+              src={imagePersonal} // حط الصورة في مجلد public
+              alt="Profile"
+              width={96}
+              height={96}
+              className="object-cover w-full h-full rounded-full border-4 border-white"
+            />
           </motion.div>
         </motion.div>
 
@@ -312,37 +365,41 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         ))}
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
 export default function Portfolio() {
-  const [isLoading, setIsLoading] = useState(true)
-  const { scrollYProgress } = useScroll()
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+  const [isLoading, setIsLoading] = useState(true);
+  const { scrollYProgress } = useScroll();
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   const handleLoadingComplete = () => {
-    setIsLoading(false)
-  }
+    setIsLoading(false);
+  };
 
-const technicalSkills = [
-  "HTML5",
-  "CSS3",
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Nextjs",      // 👈 لازم نفس الاسم زي اللي في skillIcons
-  "Tailwind",    // 👈 لازم نفس الاسم زي اللي في skillIcons
-  "Bootstrap",
-  "Sass",
-  "jQuery",
-  "Material UI",
-  "Git & Github",
-  "Python",
-  "Figma",
-]
+  const technicalSkills = [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Nextjs", // 👈 لازم نفس الاسم زي اللي في skillIcons
+    "Tailwind", // 👈 لازم نفس الاسم زي اللي في skillIcons
+    "Bootstrap",
+    "Sass",
+    "jQuery",
+    "Material UI",
+    "Git & Github",
+    "Python",
+    "Figma",
+  ];
 
-
-  const softSkills = ["Time Management", "Self-learner", "Self-motivated", "Team player"]
+  const softSkills = [
+    "Time Management",
+    "Self-learner",
+    "Self-motivated",
+    "Team player",
+  ];
 
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
@@ -361,148 +418,150 @@ const technicalSkills = [
             <ThemeToggle />
 
             {/* Animated Background */}
-            <motion.div className="fixed inset-0 opacity-30 pointer-events-none" style={{ y: backgroundY }}>
+            <motion.div
+              className="fixed inset-0 opacity-30 pointer-events-none"
+              style={{ y: backgroundY }}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10" />
             </motion.div>
 
             {/* Hero Section */}
-         <section className="min-h-screen flex items-center justify-center relative px-4 py-12">
-  <div className="text-center max-w-5xl mx-auto">
-    {/* صورة البروفايل */}
-    <motion.div
-      initial={{ scale: 0, rotate: -180 }}
-      animate={{ scale: 1, rotate: 0 }}
-      transition={{ type: "spring", stiffness: 260, damping: 20 }}
-      className="mb-8 flex justify-center"
-    >
-      <div className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-4xl font-bold text-primary-foreground overflow-hidden border-4 border-white shadow-lg">
-        <Image
-          src={imagePersonal}
-          alt="Profile"
-          width={192}
-          height={192}
-          className="object-cover w-full h-full rounded-full"
-        />
-      </div>
-    </motion.div>
+            <section className="min-h-screen flex items-center justify-center relative px-4 py-12">
+              <div className="text-center max-w-5xl mx-auto">
+                {/* صورة البروفايل */}
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                  className="mb-8 flex justify-center"
+                >
+                  <div className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-4xl font-bold text-primary-foreground overflow-hidden border-4 border-white shadow-lg">
+                    <Image
+                      src={imagePersonal}
+                      alt="Profile"
+                      width={192}
+                      height={192}
+                      className="object-cover w-full h-full rounded-full"
+                    />
+                  </div>
+                </motion.div>
 
-    {/* الاسم */}
-    <motion.h1
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2, duration: 0.8 }}
-      className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-    >
-      Adham Magdy Elsayed
-    </motion.h1>
+                {/* الاسم */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.8 }}
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+                >
+                  Adham Magdy Elsayed
+                </motion.h1>
 
-    {/* التخصص */}
-    <motion.p
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.4, duration: 0.8 }}
-      className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8"
-    >
-      React Front-End Developer
-    </motion.p>
+                {/* التخصص */}
+                <motion.p
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8"
+                >
+                  React Front-End Developer
+                </motion.p>
 
-    {/* بيانات التواصل */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.6, duration: 0.8 }}
-      className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mb-8"
-    >
-      <a
-        href="https://mail.google.com/mail/?view=cm&fs=1&to=magdyadham229@gmail.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button
-          variant="outline"
-          size="sm"
-          className="flex items-center gap-2 w-full sm:w-auto"
-        >
-          <Mail className="h-4 w-4" />
-          magdyadham229@gmail.com
-        </Button>
-      </a>
+                {/* بيانات التواصل */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                  className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mb-8"
+                >
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=magdyadham229@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center gap-2 w-full sm:w-auto"
+                    >
+                      <Mail className="h-4 w-4" />
+                      magdyadham229@gmail.com
+                    </Button>
+                  </a>
 
-      <a
-        href="https://wa.me/201012955916"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button
-          variant="outline"
-          size="sm"
-          className="flex items-center gap-2 w-full sm:w-auto"
-        >
-          <Phone className="h-4 w-4" />
-          01012955916
-        </Button>
-      </a>
+                  <a
+                    href="https://wa.me/201012955916"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center gap-2 w-full sm:w-auto"
+                    >
+                      <Phone className="h-4 w-4" />
+                      01012955916
+                    </Button>
+                  </a>
 
-      <Button
-        variant="outline"
-        size="sm"
-        className="flex items-center gap-2 w-full sm:w-auto"
-      >
-        <MapPin className="h-4 w-4" />
-        Mansoura, Egypt
-      </Button>
-    </motion.div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2 w-full sm:w-auto"
+                  >
+                    <MapPin className="h-4 w-4" />
+                    Mansoura, Egypt
+                  </Button>
+                </motion.div>
 
-    {/* لينكات السوشيال والرزوميه */}
-    <motion.div
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 0.8, duration: 0.5 }}
-      className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4"
-    >
-      <Link
-        href="https://github.com/Adham901"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button
-          size="lg"
-          className="flex items-center gap-2 w-full sm:w-auto"
-        >
-          <Github className="h-5 w-5" />
-          Adham901
-        </Button>
-      </Link>
+                {/* لينكات السوشيال والرزوميه */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8, duration: 0.5 }}
+                  className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4"
+                >
+                  <Link
+                    href="https://github.com/Adham901"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      size="lg"
+                      className="flex items-center gap-2 w-full sm:w-auto"
+                    >
+                      <Github className="h-5 w-5" />
+                      Adham901
+                    </Button>
+                  </Link>
 
-      <Link
-        href="https://www.linkedin.com/in/adham-magdy-311abb23b/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button
-          size="lg"
-          variant="outline"
-          className="flex items-center gap-2 w-full sm:w-auto"
-        >
-          <Linkedin className="h-5 w-5" />
-          Adham-magdy
-        </Button>
-      </Link>
+                  <Link
+                    href="https://www.linkedin.com/in/adham-magdy-311abb23b/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="flex items-center gap-2 w-full sm:w-auto"
+                    >
+                      <Linkedin className="h-5 w-5" />
+                      Adham-magdy
+                    </Button>
+                  </Link>
 
-      <a href="/Adham-Magdy-Elsayed.pdf" download>
-        <Button
-          size="lg"
-          variant="secondary"
-          className="flex items-center gap-2 w-full sm:w-auto"
-        >
-          <Download className="h-5 w-5" />
-          Resume
-        </Button>
-      </a>
-    </motion.div>
-  </div>
-</section>
-
+                  <a href="/Adham-Magdy-Elsayed.pdf" download>
+                    <Button
+                      size="lg"
+                      variant="secondary"
+                      className="flex items-center gap-2 w-full sm:w-auto"
+                    >
+                      <Download className="h-5 w-5" />
+                      Resume
+                    </Button>
+                  </a>
+                </motion.div>
+              </div>
+            </section>
 
             {/* About Section */}
             <AnimatedSection className="py-20 px-4">
@@ -511,9 +570,15 @@ const technicalSkills = [
                 <Card className="bg-gradient-to-br from-background to-muted/30">
                   <CardContent className="p-8">
                     <p className="text-lg leading-relaxed text-muted-foreground">
-                      I'm an experienced Front-End Developer with a strong understanding of modern web technologies. I
-                      specialize in creating immersive and intuitive user experiences. It is my pleasure to visit my
-                      portfolio and explore the projects that showcase my passion for frontend development.
+                      Frontend Engineer with hands-on experience in designing,
+                      developing, and optimizing high-performance web
+                      applications. Proficient in modern frontend technologies,
+                      including React.js, Next.js, TypeScript, and Tailwind CSS.
+                      Experienced in Agile practices, writing clean and
+                      maintainable code, and applying unit testing to ensure
+                      software quality. Strong problem-solving skills,
+                      collaborative mindset, and commitment to continuous
+                      learning.
                     </p>
                   </CardContent>
                 </Card>
@@ -521,40 +586,48 @@ const technicalSkills = [
             </AnimatedSection>
 
             {/* Skills Section */}
-           <AnimatedSection className="py-20 px-4 bg-muted/30">
+            <AnimatedSection className="py-20 px-4 bg-muted/30">
               <div className="max-w-6xl mx-auto">
-                <h2 className="text-4xl font-bold text-center mb-16">Skills & Expertise</h2>
+                <h2 className="text-4xl font-bold text-center mb-16">
+                  Skills & Expertise
+                </h2>
                 <div className="grid  gap-8 ">
-                  <SkillCard icon={Code} title="Technical Skills" skills={technicalSkills} />
-              
+                  <SkillCard
+                    icon={Code}
+                    title="Technical Skills"
+                    skills={technicalSkills}
+                  />
                 </div>
               </div>
             </AnimatedSection>
 
             {/* Projects Section */}
-         {/* Projects Section */}
-<AnimatedSection className="py-20 px-4">
-  <div className="max-w-6xl mx-auto">
-    <h2 className="text-4xl font-bold text-center mb-16">Featured Projects</h2>
-    <div className="grid md:grid-cols-2 gap-8">
-      {myProjects.map((project, idx) => (
-        <ProjectCard
-          key={idx}
-          title={project.projectTitle}
-          imgPath={project.imgPath}
-          demo={project.demo}
-          github={project.github}
-        />
-      ))}
-    </div>
-  </div>
-</AnimatedSection>
-
+            {/* Projects Section */}
+            <AnimatedSection className="py-20 px-4">
+              <div className="max-w-6xl mx-auto">
+                <h2 className="text-4xl font-bold text-center mb-16">
+                  Featured Projects
+                </h2>
+                <div className="grid md:grid-cols-2 gap-8">
+                  {myProjects.map((project, idx) => (
+                    <ProjectCard
+                      key={idx}
+                      title={project.projectTitle}
+                      imgPath={project.imgPath}
+                      demo={project.demo}
+                      github={project.github}
+                    />
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
 
             {/* Education & Experience */}
             <AnimatedSection className="py-20 px-4 bg-muted/30">
               <div className="max-w-6xl mx-auto">
-                <h2 className="text-4xl font-bold text-center mb-16">Education & Experience</h2>
+                <h2 className="text-4xl font-bold text-center mb-16">
+                  Education & Experience
+                </h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   <Card className="bg-gradient-to-br from-background to-muted/30">
                     <CardHeader>
@@ -566,9 +639,15 @@ const technicalSkills = [
                     <CardContent>
                       <div className="space-y-4">
                         <div>
-                          <h3 className="font-semibold">Bachelor of Engineering</h3>
-                          <p className="text-sm text-muted-foreground">Electronics and Communication Engineering</p>
-                          <p className="text-sm text-muted-foreground">Mansoura University</p>
+                          <h3 className="font-semibold">
+                            Bachelor of Engineering
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            Electronics and Communication Engineering
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            Mansoura University
+                          </p>
                           <Badge variant="outline" className="mt-2">
                             2019 – 2024
                           </Badge>
@@ -587,8 +666,35 @@ const technicalSkills = [
                     <CardContent>
                       <div className="space-y-4">
                         <div>
-                          <h3 className="font-semibold">Frontend Development Intern</h3>
-                          <p className="text-sm text-muted-foreground">National Telecommunication Institute (NTI)</p>
+                          <h3 className="font-semibold">
+                            Frontend Development Intern
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            Elevate Tech
+                          </p>
+                          <Badge variant="outline" className="mt-2">
+                            07/2025 – 01/2026
+                          </Badge>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card className="bg-gradient-to-br from-background to-muted/30">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Briefcase className="h-5 w-5 text-primary" />
+                        Experience
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <div>
+                          <h3 className="font-semibold">
+                            Frontend Development Intern
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            National Telecommunication Institute (NTI)
+                          </p>
                           <Badge variant="outline" className="mt-2">
                             03/2022 – 08/2022
                           </Badge>
@@ -629,18 +735,16 @@ const technicalSkills = [
                   Ready to bring your ideas to life? Let's work together!
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
-             <a
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=magdyadham229@gmail.com"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <Button size="lg" className="flex items-center gap-2">
-    <Mail className="h-5 w-5" />
-    Email Me
-  </Button>
-</a>
-
-             
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=magdyadham229@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button size="lg" className="flex items-center gap-2">
+                      <Mail className="h-5 w-5" />
+                      Email Me
+                    </Button>
+                  </a>
                 </div>
               </div>
             </AnimatedSection>
@@ -648,12 +752,14 @@ const technicalSkills = [
             {/* Footer */}
             <footer className="py-8 px-4 border-t">
               <div className="max-w-4xl mx-auto text-center">
-                <p className="text-muted-foreground">© 2024 Adham Magdy Elsayed💕🧑‍💻.</p>
+                <p className="text-muted-foreground">
+                  © 2024 Adham Magdy Elsayed💕🧑‍💻.
+                </p>
               </div>
             </footer>
           </motion.div>
         )}
       </AnimatePresence>
     </ThemeProvider>
-  )
+  );
 }
